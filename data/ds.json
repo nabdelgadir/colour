@@ -1,0 +1,22 @@
+{
+  "ids": {
+    "Purple": 2,
+    "Blue": 3,
+    "Pink": 5
+  },
+  "models": {
+    "Purple": {
+      "1": "{\"id\":1,\"hue\":\"purpleee\"}"
+    },
+    "Blue": {
+      "1": "{\"id\":1,\"hue\":\"string\"}",
+      "2": "{\"id\":2,\"hue\":\"string\"}"
+    },
+    "Pink": {
+      "1": "{\"id\":1,\"hue\":\"string\"}",
+      "2": "{\"id\":2,\"hue\":\"string\"}",
+      "3": "{\"id\":3,\"hue\":\"string\",\"parentId\":2}",
+      "4": "{\"hue\":\"string\",\"parentId\":2,\"id\":4}"
+    }
+  }
+}
