@@ -20,14 +20,11 @@ export class Pink extends Entity {
   })
   hue: string;
 
-  @hasMany(() => Pink, {keyTo: 'parentId'})
-  pinks: Pink[];
+  @hasMany(() => Pink, {keyTo: 'pink'})
+  pinks?: Pink[];
 
   @belongsTo(() => Pink)
   pink?: number;
-
-  @property({type: 'number'})
-  parentId?: number;
 
   constructor(data?: Partial<Pink>) {
     super(data);

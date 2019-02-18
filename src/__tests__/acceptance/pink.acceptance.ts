@@ -45,7 +45,7 @@ describe('ColourApplication', () => {
     expect(response.body).to.containDeep(parent);
 
     const child = givenPink();
-    child.parentId = (await pinkRepo.findById(response.body.id)).getId();
+    child.pink = (await pinkRepo.findById(response.body.id)).getId();
     response = await client
       .post('/pinks')
       .send(child)
@@ -62,14 +62,14 @@ describe('ColourApplication', () => {
     expect(response.body).to.containDeep(parent);
 
     const child = givenPink();
-    child.parentId = (await pinkRepo.findById(response.body.id)).getId();
+    child.pink = (await pinkRepo.findById(response.body.id)).getId();
     response = await client
       .post('/pinks')
       .send(child)
       .expect(200);
     expect(response.body).to.containDeep(child);
 
-    response = await client.get(`/pinks/${child.parentId}/pink`).expect(200);
+    response = await client.get(`/pinks/${child.pink}/pink`).expect(200);
     expect(response.body).to.containDeep(parent);
   });
 
