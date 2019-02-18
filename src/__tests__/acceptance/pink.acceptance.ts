@@ -5,7 +5,6 @@ import {
   givenHttpServerConfig,
 } from '@loopback/testlab';
 import {ColourApplication} from '../../application';
-// import {Pink} from '../../models';
 import {PinkRepository} from '../../repositories';
 import {givenPink} from './test-helper';
 
@@ -54,7 +53,7 @@ describe('ColourApplication', () => {
     expect(response.body).to.containDeep(child);
   });
 
-  it.only('gets child pinks from parent pink', async () => {
+  it('gets child pinks from parent pink', async () => {
     const parent = givenPink();
     let response = await client
       .post('/pinks')
@@ -70,8 +69,8 @@ describe('ColourApplication', () => {
       .expect(200);
     expect(response.body).to.containDeep(child);
 
-    response = await client.get(`/pinks/${child.parentId}`).expect(200);
-    console.log(response.body);
+    response = await client.get(`/pinks/${child.parentId}/pink`).expect(200);
+    expect(response.body).to.containDeep(parent);
   });
 
   /*
@@ -109,8 +108,4 @@ describe('ColourApplication', () => {
   async function givenPinkRepository() {
     pinkRepo = await app.getRepository(PinkRepository);
   }
-
-  // async function givenPinkInstance(pink?: Partial<Pink>) {
-  //   return await pinkRepo.create(givenPink(pink));
-  // }
 });

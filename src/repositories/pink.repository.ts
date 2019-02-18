@@ -1,7 +1,6 @@
 import {
   DefaultCrudRepository,
   HasManyRepositoryFactory,
-  // repository,
   BelongsToAccessor,
 } from '@loopback/repository';
 import {Pink} from '../models';
@@ -12,26 +11,23 @@ export class PinkRepository extends DefaultCrudRepository<
   Pink,
   typeof Pink.prototype.id
 > {
+  // EDITED HERE
   public readonly pinks: HasManyRepositoryFactory<
     Pink,
     typeof Pink.prototype.id
   >;
   public readonly pink: BelongsToAccessor<Pink, typeof Pink.prototype.id>;
-  constructor(
-    @inject('datasources.ds') dataSource: DsDataSource,
-    // @repository.getter('PinkRepository')
-    // getPinkRepository: Getter<PinkRepository>,
-  ) {
+  constructor(@inject('datasources.ds') dataSource: DsDataSource) {
     super(Pink, dataSource);
-    // this.pink = this._createBelongsToAccessorFor(
-    //   'pink',
-    //   // getPinkRepository,
-    //   Getter.fromValue(this),
-    // );
+
+    // EDITED HERE
+    this.pink = this._createBelongsToAccessorFor(
+      'pink',
+      Getter.fromValue(this),
+    );
     this.pinks = this.createHasManyRepositoryFactoryFor(
       'pinks',
       Getter.fromValue(this),
-      // getPinkRepository,
     );
   }
 }

@@ -4,7 +4,6 @@ import {
   property,
   hasMany,
   belongsTo,
-  // belongsTo,
 } from '@loopback/repository';
 
 @model()
